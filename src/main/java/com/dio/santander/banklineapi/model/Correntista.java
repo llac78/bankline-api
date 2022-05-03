@@ -1,10 +1,21 @@
 package com.dio.santander.banklineapi.model;
 
-public class Correntista {
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Correntista {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String cpf;
 	private String nome;
+	
+	// As informações que estiverem nesta classe estarão na mesma tabela principal (a tabela que possui referência a esta classe)
+	@Embedded
 	private Conta conta;
 	
 	public Integer getId() {
